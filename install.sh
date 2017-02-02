@@ -10,7 +10,7 @@ mkfs.vfat -F32 /dev/sda1
 pvcreate /dev/mapper/lvm
 vgcreate vg /dev/mapper/lvm
 lvcreate -L 8G vg -n swap
-lvcreate -L 15G vg -n root
+lvcreate -L 100G vg -n root
 lvcreate -l 100%FREE vg -n home
 mkfs.ext4 /dev/mapper/vg-root
 mkfs.ext4 /dev/mapper/vg-home
