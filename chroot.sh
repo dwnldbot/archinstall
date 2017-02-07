@@ -15,4 +15,4 @@ passwd
 bootctl --path=/boot install
 
 echo -e '# timeout 0\ndefault arch' > /boot/loader/loader.conf
-echo -e 'title\tArch Linux\nlinux\t\vmlinuz-linux\ninitrd\t/initramfs-linux.img\noptions\tcryptdevice=/dev/sda2:lvm root=/dev/mapper/vg-root resume=/dev/mapper/vg-swap quiet rw' > /boot/loader/entries/arch.conf
+echo -e 'title\tArch Linux\nlinux\t/vmlinuz-linux\ninitrd\t/initramfs-linux.img\noptions\tcryptdevice=/dev/sda2:lvm root=/dev/mapper/vg-root resume=/dev/mapper/vg-swap quiet rw' > /boot/loader/entries/arch.conf
