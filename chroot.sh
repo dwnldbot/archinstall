@@ -12,6 +12,9 @@ sed -i 's/modconf block filesystems/modconf block encrypt lvm2 filesystems/g' /e
 mkinitcpio -p linux
 passwd
 
+useradd -m -g users -G wheel,games,power,optical,storage,scanner,lp,audio,video -s /bin/bash b0b
+passwd b0b
+
 bootctl --path=/boot install
 
 echo -e '# timeout 0\ndefault arch' > /boot/loader/loader.conf
