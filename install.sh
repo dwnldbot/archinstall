@@ -1,10 +1,11 @@
 #!/bin/bash
 timedatectl set-ntp true
+#shred --verbose --random-source=/dev/urandom --iterations=3 /dev/sda
 sgdisk -og /dev/sda
 sgdisk -n 1:2048:1050623 -t 1:ef00 /dev/sda
 ENDSECTOR=`sgdisk -E /dev/sda`
 sgdisk -n 2:1050624:$ENDSECTOR -t 2:8e00 /dev/sda
-cryptsetup luksFormat /dev/sda2
+cryptsetup --verbose --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sda2
 cryptsetup luksOpen /dev/sda2 lvm
 mkfs.vfat -F32 /dev/sda1
 pvcreate /dev/mapper/lvm
