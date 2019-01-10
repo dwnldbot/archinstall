@@ -8,7 +8,7 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "broken" > /etc/hostname
 
-sed -i 's/modconf block filesystems/modconf block encrypt lvm2 filesystems/g' /etc/mkinitcpio.conf
+sed -i 's/modconf block filesystems/modconf block encrypt lvm2 filesystems resume/g' /etc/mkinitcpio.conf
 mkinitcpio -p linux
 passwd
 
